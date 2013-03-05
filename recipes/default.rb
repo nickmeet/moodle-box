@@ -44,7 +44,7 @@ bash "configure moodle" do
     /usr/bin/php install.php \
       --non-interactive \
       --lang=en \
-      --wwwroot=http://localhost:8080 \
+      --wwwroot=#{node.moodle['url']} \
       --dataroot=#{node.moodle['data_dir']} \
       --dbuser=root \
       --dbpass=#{node['mysql']['server_root_password']} \
