@@ -58,6 +58,12 @@ bash "configure moodle" do
   not_if 'test -f /usr/local/moodle/moodle/config.php'
 end
 
+cron "moodle_maintenance" do
+  minute '*/15'
+  user 'www-data'
+  command "/usr/bin/php /usr/local/moodle/moodle/admin/cli/cron.php"
+end
+
 apache_site 'default' do
   enable false
 end
