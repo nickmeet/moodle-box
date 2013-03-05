@@ -37,7 +37,7 @@ directory '/usr/local/moodle/moodle' do
   mode 0755
 end
 
-bash "configure moodle" do
+bash "configure-moodle" do
   user 'www-data'
   cwd '/usr/local/moodle/moodle/admin/cli'
   code <<-CODE
@@ -58,7 +58,7 @@ bash "configure moodle" do
   not_if 'test -f /usr/local/moodle/moodle/config.php'
 end
 
-cron "moodle_maintenance" do
+cron "moodle-maintenance" do
   minute '*/15'
   user 'www-data'
   command "/usr/bin/php /usr/local/moodle/moodle/admin/cli/cron.php"
