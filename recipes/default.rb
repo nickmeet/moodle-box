@@ -3,6 +3,7 @@ include_recipe "mysql::ruby"
 include_recipe "apache2::mod_php5"
 %w[
   aspell
+  git
   graphviz
 
   php5-curl
