@@ -20,28 +20,25 @@ mysql_database node.moodle['database'] do
   action :create
 end
 
+moodle_version = '2.4.1'
+
 ark "moodle" do
   url "http://downloads.sourceforge.net/project/moodle/Moodle/stable24/moodle-latest-24.tgz?r=&ts=1362482456&use_mirror=heanet"
-  version '2.4.1'
+  version moodle_version
 end
 
-directory node.moodle['data_dir'] do
+directory node.moodle.data_dir do
   owner 'www-data'
   group 'www-data'
   mode 0777
 end
 
-directory '/usr/local/moodle/moodle' do
-  owner 'www-data'
-  group 'www-data'
-  mode 0755
-end
-
 bash "configure-moodle" do
-  user 'www-data'
-  cwd '/usr/local/moodle/moodle/admin/cli'
+  cwd "/usr/local/moodle/moodle"
   code <<-CODE
-    /usr/bin/php install.php \
+    set -e
+    chmod a+w .
+    sudo -u www-data /usr/bin/php admin/cli/install.php \
       --non-interactive \
       --lang=en \
       --wwwroot=#{node.moodle['url']} \
@@ -53,9 +50,26 @@ bash "configure-moodle" do
       --fullname="TestSite" \
       --shortname="test" \
       --agree-license
+    chmod 644 config.php
+    chmod 755 .
   CODE
 
   not_if 'test -f /usr/local/moodle/moodle/config.php'
+end
+
+# tar claims /vagrant is read-only when unpacking
+# so we move all this afterwards
+moodle_dir = "moodle-#{moodle_version}"
+bash "move-to-vagrant" do
+  code <<-CODE
+    set -e
+    cp -r /usr/local/#{moodle_dir} /vagrant
+    rm -rf /usr/local/#{moodle_dir}
+    ln -s /vagrant/#{moodle_dir} /usr/local/#{moodle_dir}
+  CODE
+  only_if do
+    File.directory?("/vagrant") && ! File.directory?("/vagrant/#{moodle_dir}")
+  end
 end
 
 cron "moodle-maintenance" do
