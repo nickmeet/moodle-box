@@ -18,3 +18,10 @@ After the box is finished provisioning, Moodle is available on an
 internal host at http://172.22.83.237
 
 Login: admin / adminpass
+
+
+Usage
+-----
+
+For development, make sure to enable the debugging in site Settings ->
+Developer
