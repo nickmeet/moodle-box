@@ -21,10 +21,28 @@ mysql_database node.moodle['database'] do
 end
 
 moodle_version = '2.4.1'
+moodle_dir = "moodle-#{moodle_version}"
+
+# tar claims /vagrant is read-only when unpacking
+# so we move all this afterwards
+bash "move-to-vagrant" do
+  code <<-CODE
+    set -e
+    if [ -d /vagrant ]; then
+      if ! [ -d /vagrant/#{moodle_dir} ]; then
+        cp -r /usr/local/#{moodle_dir} /vagrant
+      fi
+      rm -rf /usr/local/#{moodle_dir}
+      ln -s /vagrant/#{moodle_dir} /usr/local/#{moodle_dir}
+    fi
+  CODE
+  action :nothing
+end
 
 ark "moodle" do
   url "http://downloads.sourceforge.net/project/moodle/Moodle/stable24/moodle-latest-24.tgz?r=&ts=1362482456&use_mirror=heanet"
   version moodle_version
+  notifies :run, "bash[move-to-vagrant]"
 end
 
 directory node.moodle.data_dir do
@@ -55,21 +73,6 @@ bash "configure-moodle" do
   CODE
 
   not_if 'test -f /usr/local/moodle/moodle/config.php'
-end
-
-# tar claims /vagrant is read-only when unpacking
-# so we move all this afterwards
-moodle_dir = "moodle-#{moodle_version}"
-bash "move-to-vagrant" do
-  code <<-CODE
-    set -e
-    cp -r /usr/local/#{moodle_dir} /vagrant
-    rm -rf /usr/local/#{moodle_dir}
-    ln -s /vagrant/#{moodle_dir} /usr/local/#{moodle_dir}
-  CODE
-  only_if do
-    File.directory?("/vagrant") && ! File.directory?("/vagrant/#{moodle_dir}")
-  end
 end
 
 cron "moodle-maintenance" do
