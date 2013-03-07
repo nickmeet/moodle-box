@@ -29,7 +29,10 @@ bash "move-to-vagrant" do
   code <<-CODE
     set -e
     if [ -d /vagrant ]; then
-      if ! [ -d /vagrant/#{moodle_dir} ]; then
+      if [ -d /vagrant/#{moodle_dir} ]; then
+        # force re-provisioning of the DB
+        rm -f /vagrant/#{moodle_dir}/moodle/config.php
+      else
         cp -r /usr/local/#{moodle_dir} /vagrant
       fi
       rm -rf /usr/local/#{moodle_dir}
