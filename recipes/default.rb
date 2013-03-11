@@ -15,7 +15,7 @@ include_recipe "apache2::mod_php5"
 ].each{|p| package(p) }
 
 ### Local vars ###
-moodle_version = '2.4.1'
+moodle_version = '2.4.2'
 moodle_dir = "moodle-#{moodle_version}"
 
 ## Prepare
@@ -37,7 +37,7 @@ end
 ###
 
 ark "moodle" do
-  url "http://downloads.sourceforge.net/project/moodle/Moodle/stable24/moodle-latest-24.tgz?r=&ts=1362482456&use_mirror=heanet"
+  url "http://prdownloads.sf.net/moodle/Moodle/stable24/moodle-#{version}.tgz"
   version moodle_version
   # notifies :run, "bash[move-to-vagrant]"
 end
