@@ -1,5 +1,3 @@
-require 'berkshelf/vagrant'
-
 Vagrant::Config.run do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
@@ -54,6 +52,7 @@ Vagrant::Config.run do |config|
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       :mysql => {
+        :bind_address => '0.0.0.0',
         :server_root_password => 'rootpass',
         :server_debian_password => 'debpass',
         :server_repl_password => 'replpass',
