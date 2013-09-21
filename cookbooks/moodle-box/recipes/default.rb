@@ -51,7 +51,7 @@ bash "configure-moodle" do
     sudo -u www-data /usr/bin/php admin/cli/install.php \
       --non-interactive \
       --lang=en \
-      --wwwroot=#{node.moodle['url']} \
+      --wwwroot=http://128.178.146.104:8081 \
       --dataroot=#{node.moodle['data_dir']} \
       --dbuser=root \
       --dbpass="#{node['mysql']['server_root_password']}" \
