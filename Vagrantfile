@@ -27,14 +27,14 @@ Vagrant::Config.run do |config|
   # via the IP.
   #
   # This is a random address in the 172.16.0.0/12 range.
-  IP_ADDR = "172.22.83.237"
+  IP_ADDR = "128.178.146.105"
   config.vm.network :hostonly, IP_ADDR
 
   # Assign this VM to a bridged network, allowing you to connect directly to a
   # network using the host's network device. This makes the VM appear as another
   # physical device on your network.
 
-  # config.vm.network :bridged
+  config.vm.network :bridged
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
