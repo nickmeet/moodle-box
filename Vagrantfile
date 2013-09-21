@@ -61,7 +61,8 @@ Vagrant::Config.run do |config|
         :url => "http://#{IP_ADDR}",
       },
     }
-
+    
+    chef.cookbooks_path = ".."
     chef.add_recipe("moodle-box")
   end
 end
