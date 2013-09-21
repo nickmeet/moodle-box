@@ -44,7 +44,7 @@ end
 
 # install.php doesn't create the config.php file when run in /vagrant
 bash "configure-moodle" do
-  cwd "/usr/local/moodle/moodle"
+  cwd "/usr/local/moodle"
   code <<-CODE
     set -e
     chmod a+w .
@@ -63,7 +63,7 @@ bash "configure-moodle" do
     chmod 644 config.php
     chmod 755 .
   CODE
-  creates '/usr/local/moodle/moodle/config.php'
+  creates '/usr/local/moodle/config.php'
 end
 
 # tar claims /vagrant is read-only when unpacking
@@ -75,7 +75,7 @@ end
 #     set -e
 #     if [ -d #{target} ]; then
 #       # Already exists. Instead we're going to re-provision the DB
-#       sudo -u www-data /usr/bin/php #{target}/moodle/admin/cli/install_database.php
+#       sudo -u www-data /usr/bin/php #{target}/admin/cli/install_database.php
 #     else
 #       cp -r #{source} /vagrant
 #     fi
@@ -88,7 +88,7 @@ end
 cron "moodle-maintenance" do
   minute '*/15'
   user 'www-data'
-  command "/usr/bin/php /usr/local/moodle/moodle/admin/cli/cron.php"
+  command "/usr/bin/php /usr/local/moodle/admin/cli/cron.php"
 end
 
 apache_site 'default' do
