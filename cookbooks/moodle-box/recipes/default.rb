@@ -15,7 +15,7 @@ include_recipe "apache2::mod_php5"
 ].each{|p| package(p) }
 
 ### Local vars ###
-moodle_version = '2.4.3'
+moodle_version = '2.5'
 moodle_dir = "moodle-#{moodle_version}"
 
 ## Prepare
@@ -38,7 +38,7 @@ end
 
 git "moodle" do
     repository "git://git.moodle.org/moodle.git"
-    reference "MOODLE_24_STABLE"
+    reference "MOODLE_25_STABLE"
     action :checkout
     destination "/usr/local/moodle"
 end
