@@ -1,12 +1,12 @@
 <VirtualHost *:80>
 	ServerAdmin ops@example.com
 
-	DocumentRoot /usr/local/moodle/moodle/
+	DocumentRoot /usr/local/moodle/
 	<Directory />
 		Options FollowSymLinks
 		AllowOverride None
 	</Directory>
-	<Directory /usr/local/moodle/moodle/>
+	<Directory /usr/local/moodle/>
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride None
 		Order allow,deny
