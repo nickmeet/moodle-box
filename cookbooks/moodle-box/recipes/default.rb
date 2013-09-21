@@ -36,10 +36,11 @@ end
 ###           why I'm not working directly in the /vagrant folder.
 ###
 
-ark "moodle" do
-  url "http://prdownloads.sf.net/moodle/Moodle/stable24/moodle-latest-24.tgz"
-  version moodle_version
-  # notifies :run, "bash[move-to-vagrant]"
+git "moodle" do
+    repository "git://git.moodle.org/moodle.git"
+    reference "MOODLE_24_STABLE"
+    action :checkout
+    destination "/usr/local/moodle"
 end
 
 # install.php doesn't create the config.php file when run in /vagrant
