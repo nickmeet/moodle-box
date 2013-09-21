@@ -62,8 +62,6 @@ Vagrant::Config.run do |config|
       },
     }
 
-    chef.run_list = [
-      "recipe[moodle-box::default]"
-    ]
+    chef.add_recipe("moodle-box")
   end
 end
