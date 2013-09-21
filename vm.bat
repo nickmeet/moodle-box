@@ -2,6 +2,8 @@ set argument=%1
 
 if "%argument%" == "start" (   
     START VBoxHeadless --startvm moodle-box_default_1379763560 --vrde off
+)
+if "%argument%" == "connect" (  
 	C:\manual-installations\dev\putty vagrant@172.22.83.237 %= password is vagrant =%
 )
 if "%argument%" == "check" ( 
