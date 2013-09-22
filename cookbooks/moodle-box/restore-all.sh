@@ -3,9 +3,9 @@
 # Script Name:	MoodleRestore			 *Local*
 # By:		Edward Owens
 # Date:		May 2011
-# Purpose:	Restore Moodle Root, Moodledata, and Database from the argument of 1 or 2.
-#               MoodleRestore 1 will restore moodle1.zip, MoodleRestore 2 will restore moodle2.zip
-#		This works in tandem with the Backup script I have created, 'MoodleBackup'.
+# Purpose:	Restores a moodle site that was backed up using the script 'MoodleBackup'.
+# Modified at:  September 2013
+# Modified by:  nikolaos.maris@epfl.ch
 #==========================================================================================================================
 
 # define variables
