@@ -48,6 +48,9 @@ bash "configure-moodle" do
   cwd "/usr/local/moodle"
   code <<-CODE
     set -e
+    sudo sed -i '/post_max_size/ s/8M/50M/' /etc/php5/apache2/php.ini
+    sudo sed -i '/upload_max_filesize/ s/2M/50M/' /etc/php5/apache2/php.ini
+    sudo sed -i '/max_execution_time/ s/30/600/' /etc/php5/apache2/php.ini
     chmod a+w .
     sudo -u www-data /usr/bin/php admin/cli/install.php \
       --non-interactive \
