@@ -15,8 +15,8 @@ mkdir -p $HOME/backups
 p=$HOME/backups
 suffix=$(date +%B-%Y)					# date stamp
 logname=$p"/"$suffix"_backup.log"	# absolute path to logfile
-file_name1=$p"/moodle1.zip"		# absolute path to backup 1
-file_name2=$p"/moodle2.zip"		# absolute path to backup 2
+file_name1="/vagrant/moodle1.zip"		# absolute path to backup 1
+file_name2="/vagrant/moodle2.zip"		# absolute path to backup 2
 zip1="/usr/local/moodle/"		# absolute path to moodle root
 zip2="/var/lib/moodle/"			# absolute path to moodle data
 dbscript=$p"/moodle_db.sql"		# absolute path to sql file
