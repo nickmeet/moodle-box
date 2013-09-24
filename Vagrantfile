@@ -1,4 +1,4 @@
-Vagrant::Config.run do |config|
+Vagrant.configure("2") do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
@@ -14,7 +14,7 @@ Vagrant::Config.run do |config|
   # to skip installing and copying to Vagrant's shelf.
   # config.berkshelf.except = []
 
-  config.vm.host_name = "moodle-box-berkshelf"
+  config.vm.hostname = "moodle-box-berkshelf"
 
   config.vm.box = "ec2-precise64"
   config.vm.box_url =
@@ -28,7 +28,7 @@ Vagrant::Config.run do |config|
   #
   # This is a random address in the 172.16.0.0/12 range.
   IP_ADDR = "172.22.83.237"
-  config.vm.network :hostonly, IP_ADDR
+  config.vm.network  "private_network", ip: IP_ADDR
 
   # Assign this VM to a bridged network, allowing you to connect directly to a
   # network using the host's network device. This makes the VM appear as another
@@ -38,7 +38,7 @@ Vagrant::Config.run do |config|
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
-  config.vm.forward_port 80, 8081
+  config.vm.network :forwarded_port, guest: 80, host: 8081
 
   # Share an additional folder to the guest VM. The first argument is
   # an identifier, the second is the path on the guest to mount the
@@ -61,7 +61,7 @@ Vagrant::Config.run do |config|
         :url => "http://#{IP_ADDR}",
       },
     }
-    
+    config.vm.synced_folder ".", "/vagrant", :nfs => true
 	chef.add_recipe("moodle-box::default")
   end
 end
