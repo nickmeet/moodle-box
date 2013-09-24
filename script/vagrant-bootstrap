@@ -10,6 +10,7 @@ has() {
   return $?
 }
 
+apt-get install -y zip
 # TODO: Remove the dependency on that external service
 if ! has chef-solo ; then
   apt-get update

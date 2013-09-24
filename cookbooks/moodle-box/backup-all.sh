@@ -30,9 +30,9 @@ echo "Started--> "$(date +%H":"%M":"%S) > $logname
 echo "Dumping database"
 mysqldump --opt --user=$dbUser --password=$dbPassword --host=$dbHost $dbName > $dbscript
 
-if test -e $file_name1;
+if test -e $file_name1
 then
-	if test -e $file_name2;
+	if test -e $file_name2
 	then
 		echo "copying moodle2.zip to moodle1.zip"
 		cp $file_name2 $file_name1 >> $logname
