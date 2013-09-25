@@ -56,4 +56,4 @@ social forum -> subscription= auto, read tracking=on
 
 Export books as IMS but import chapters.
 
-(backup does not back up wiki pages. Slideshow does not work. Subchapters cannot be imported as sub-chapters.)
+(backup does not back up wiki pages. Slideshow does not work. Subchapters cannot be imported as sub-chapters. Moodle supports flv video format.)
