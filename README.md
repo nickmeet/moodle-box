@@ -57,3 +57,8 @@ social forum -> subscription= auto, read tracking=on
 Export books as IMS but import chapters.
 
 (backup does not back up wiki pages. Slideshow does not work. Subchapters cannot be imported as sub-chapters. Moodle supports flv video format.)
+
+Other info
+-----
+
+To install a moodle module, download it, put it at /usr/local/moodle/mod/ and go to site administration -> notifications -> upgrade
