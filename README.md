@@ -62,3 +62,5 @@ Other info
 -----
 
 To install a moodle module, download it, put it at /usr/local/moodle/mod/ and go to site administration -> notifications -> upgrade
+sudo sed -i '/iamac71.epfl.ch:8080/ s/iamac71.epfl.ch:8080/128.178.146.104:8081/' /usr/local/moodle/mod/widgetspace/lib/container.php
+
