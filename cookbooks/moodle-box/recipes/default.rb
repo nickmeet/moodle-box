@@ -43,6 +43,21 @@ git "moodle" do
     destination "/usr/local/moodle"
 end
 
+# git "moodle opensocial plugin" do
+    # repository "git://github.com/vohtaski/shindig-moodle-mod.git"
+	# reference "master"
+    # action :checkout
+    # destination "/usr/local/shindig-moodle-mod/"
+# end
+
+# bash "moodle opensocial plugin" do
+   # code <<-EOH
+     # cp -R /usr/local/shindig-moodle-mod/ /usr/local/moodle/mod/widgetspace
+	 # sed -i '/iamac71.epfl.ch:8080/ s/iamac71.epfl.ch:8080/128.178.146.104:8081/' /usr/local/moodle/mod/widgetspace/lib/container.php
+     # EOH
+   # environment 'PREFIX' => "/usr/local"
+# end
+
 # install.php doesn't create the config.php file when run in /vagrant
 bash "configure-moodle" do
   cwd "/usr/local/moodle"
@@ -55,7 +70,7 @@ bash "configure-moodle" do
     sudo -u www-data /usr/bin/php admin/cli/install.php \
       --non-interactive \
       --lang=en \
-      --wwwroot=http://128.178.146.104:8081 \
+      --wwwroot=http://localhost:8081 \
       --dataroot=#{node.moodle['data_dir']} \
       --dbuser=root \
       --dbpass="#{node['mysql']['server_root_password']}" \

@@ -43,6 +43,8 @@ so you can get an automatic translation and edit it (like the one of 'There are 
 Settings > Site administration > language -> language packs -> install
 Users can choose the official language of the software from their profile page.
 
+Settings > Site administration > Plugins > Manage repositories -> At Dropbox select "enable and visible" -> click on the link to dropbox -> create a Dropbox API, not a Dropin => copy key and secret to the moodle page
+
 Sample Course configuration
 -----
 
