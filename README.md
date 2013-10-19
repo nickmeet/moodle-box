@@ -78,13 +78,21 @@ vagrant package --vagrantfile Vagrantfile
 How to deploy a virtual machine
 -----
 
-You should get the files localbox.zip and package.box. Extract the localbox.zip on a folder, put there also the file package.box and type the following commands
+You should get the files localbox.zip and package.box and install virtualbox and vagrant. Extract the localbox.zip on a folder, put there also the file package.box and type the following commands
 
 vagrant box add my_box /path/to/the/package.box
 
 vagrant init my_box
 
 vagrant up
+
+Below you can find the username/password that you will need:
+
+virtual machine account: vagrant/vagrant
+
+admin: admin/adminpass
+
+student: nikos/Nikos85!
 
 Other info
 -----
