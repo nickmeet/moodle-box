@@ -71,9 +71,20 @@ cd moodle-box
 
 vagrant up
 
-# and once you finish configuring localhost:8081
+and once you finish configuring localhost:8081
 
 vagrant package --vagrantfile Vagrantfile
+
+How to deploy a virtual machine
+-----
+
+You should get the files localbox.zip and package.box. Extract the localbox.zip on a folder, put there also the file package.box and type the following commands
+
+vagrant box add my_box /path/to/the/package.box
+
+vagrant init my_box
+
+vagrant up
 
 Other info
 -----
