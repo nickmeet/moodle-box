@@ -60,6 +60,21 @@ Export books as IMS but import chapters.
 
 (backup does not back up wiki pages. Slideshow does not work. Subchapters cannot be imported as sub-chapters. Moodle supports flv video format.)
 
+How to package the virtual machine
+-----
+
+As moodle cannot be configured from command line, you can distribute your modified virtual machine with the following commands:
+
+git clone https://github.com/nickmeet/moodle-box.git
+
+cd moodle-box
+
+vagrant up
+
+# and once you finish configuring localhost:8081
+
+vagrant package --vagrantfile Vagrantfile
+
 Other info
 -----
 
