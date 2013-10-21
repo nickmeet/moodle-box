@@ -82,8 +82,6 @@ You should get the files localbox.zip and package.box and install virtualbox and
 
 vagrant box add my_box /path/to/the/package.box
 
-vagrant init my_box
-
 vagrant up
 
 Below you can find the username/password that you will need:
