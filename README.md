@@ -78,7 +78,7 @@ vagrant package --vagrantfile Vagrantfile
 How to deploy a virtual machine
 -----
 
-You should get the files localbox.zip and package.box and install virtualbox and vagrant. Extract the localbox.zip on a folder, put there also the file package.box and type the following commands
+You should get the files localbox.zip and package.box and install virtualbox and vagrant (if you have Vagrant 1.3.5, use VirtualBox 4.2.18 as there is a known issue with 4.3). Extract the localbox.zip on a folder, put there also the file package.box and type the following commands
 
 vagrant box add my_box /path/to/the/package.box
 
